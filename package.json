@@ -10,8 +10,7 @@
     "typings": "./lib/index.d.ts",
     "types": "./lib/index.d.ts",
     "directories": {
-        "lib": "lib",
-        "test": "test"
+        "lib": "lib"
     },
     "files": [
         "lib"
@@ -22,7 +21,11 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/y1j2x34/channel-ts.git"
+        "url": "git+https://github.com/vgerbot-libraries/parcel-transformer-ttypescript.git"
+    },
+    "keywords": ["parcel", "parcel-transformer", "ttypescript", "transformer", "typescript", "ttsc"],
+    "bugs": {
+        "url": "https://github.com/vgerbot-libraries/parcel-transformer-ttypescript/issues"
     },
     "scripts": {
         "test": "jest --coverage",
@@ -31,9 +34,6 @@
         "build": "npm run build:esm && npm run build:cjs",
         "build:esm": "ttsc --module esnext --target esnext --outDir lib/esm -p ./tsconfig.json",
         "build:cjs": "ttsc --module commonjs --target es5 --outDir lib/cjs -p ./tsconfig.json"
-    },
-    "bugs": {
-        "url": "https://github.com/vgerbot-libraries/parcel-transformer-ttypescript/issues"
     },
     "devDependencies": {
         "@parcel/plugin": "^2.7.0",
@@ -72,7 +72,7 @@
         }
     },
     "lint-staged": {
-        "packages/channel-ts/{src,test}/**/*.{js,ts,tsx}": [
+        "{src,test}/**/*.{js,ts,tsx}": [
             "npm run format",
             "git add"
         ]
