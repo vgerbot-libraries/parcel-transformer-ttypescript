@@ -1,6 +1,6 @@
 {
     "name": "@vgerbot/parcel-transformer-ttypescript",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A parcel v2 TypeScript transformer to use ttypescript",
     "author": "y1j2x34 <y1j2x34@qq.com>",
     "homepage": "https://github.com/vgerbot-libraries/parcel-transformer-ttypescript#readme",
