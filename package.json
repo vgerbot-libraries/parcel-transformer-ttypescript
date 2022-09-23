@@ -1,0 +1,85 @@
+{
+    "name": "@vgerbot/parcel-transformer-ttypescript",
+    "version": "1.0.0",
+    "description": "A parcel v2 TypeScript transformer to use ttypescript",
+    "author": "y1j2x34 <y1j2x34@qq.com>",
+    "homepage": "https://github.com/vgerbot-libraries/parcel-transformer-ttypescript#readme",
+    "license": "MIT",
+    "main": "lib/cjs/index.js",
+    "module": "lib/esm/index.js",
+    "typings": "./lib/index.d.ts",
+    "types": "./lib/index.d.ts",
+    "directories": {
+        "lib": "lib",
+        "test": "test"
+    },
+    "files": [
+        "lib"
+    ],
+    "publishConfig": {
+        "registry": "https://registry.npmmirror.com/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/y1j2x34/channel-ts.git"
+    },
+    "scripts": {
+        "test": "jest --coverage",
+        "lint": "eslint {src,test}/**/*.{ts,tsx}",
+        "format": "eslint --fix {src,test}/**/*.{ts,tsx}",
+        "build": "npm run build:esm && npm run build:cjs",
+        "build:esm": "ttsc --module esnext --target esnext --outDir lib/esm -p ./tsconfig.json",
+        "build:cjs": "ttsc --module commonjs --target es5 --outDir lib/cjs -p ./tsconfig.json"
+    },
+    "bugs": {
+        "url": "https://github.com/vgerbot-libraries/parcel-transformer-ttypescript/issues"
+    },
+    "devDependencies": {
+        "@parcel/plugin": "^2.7.0",
+        "@parcel/source-map": "^2.1.1",
+        "@parcel/ts-utils": "^2.7.0",
+        "@types/node": "^18.7.18",
+        "@typescript-eslint/eslint-plugin": "^5.37.0",
+        "@typescript-eslint/parser": "^5.37.0",
+        "commitizen": "^4.2.5",
+        "commitlint": "17.1.2",
+        "cz-customizable": "^7.0.0",
+        "eslint": "8.22.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "husky": "4.3.8",
+        "lint-staged": "^13.0.3",
+        "prettier": "^2.7.1",
+        "ttypescript": "^1.5.13",
+        "typescript": "^4.8.3"
+    },
+    "dependencies": {
+        "tslib": "^2.2.0"
+    },
+    "peerDependencies": {
+        "@parcel/plugin": ">=2.0.0",
+        "@parcel/source-map": ">=2.0.0",
+        "@parcel/ts-utils": ">=2.0.0",
+        "typescript": ">=4.0.0"
+    },
+    "engines": {
+        "parcel": "^2.0.0"
+    },
+    "config": {
+        "commitizen": {
+            "path": "node_modules/cz-customizable"
+        }
+    },
+    "lint-staged": {
+        "packages/channel-ts/{src,test}/**/*.{js,ts,tsx}": [
+            "npm run format",
+            "git add"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+            "pre-commit": "lint-staged"
+        }
+    }
+}
