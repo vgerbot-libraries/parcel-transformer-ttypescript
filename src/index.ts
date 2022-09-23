@@ -8,7 +8,6 @@ const ParcelTtscTransformer = new Transformer({
         return loadTSConfig(config, options);
     },
     async transform({ asset, config }) {
-        console.error(asset);
         asset.type = 'js';
         const filePath = asset.filePath;
 
