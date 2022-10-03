@@ -27,7 +27,6 @@ const ParcelTtscTransformer = new Transformer({
         const fileNameWithoutExt = filePath.replace(/\.ts$/, '');
 
         let content: string = '';
-        let dts: string = '';
         let sourcemap: SourceMap | undefined;
         program.emit(sourceFile, (fileName, text) => {
             const ext = fileName.slice(fileNameWithoutExt.length);
@@ -39,24 +38,15 @@ const ParcelTtscTransformer = new Transformer({
                     sourcemap = new SourceMap(compilerOptions.projectRoot);
                     sourcemap.addVLQMap(JSON.parse(text));
                     break;
-                case '.d.ts':
-                    dts = text;
             }
         });
-        const dtsResult = dts
-            ? {
-                  type: 'ts',
-                  content: dts,
-                  map: undefined,
-              }
-            : [];
         return [
             {
                 type: 'js',
                 content: content,
                 map: sourcemap,
             },
-        ].concat(dtsResult);
+        ];
     },
 });
 
